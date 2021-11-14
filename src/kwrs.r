@@ -4,7 +4,7 @@
 #   p_value: the value to rejected the NULL hypothesis if less than
 # OUTPUT:
 #   TRUE if the NULL hypothesis is rejected
-kwrs <- function(data, p_value = 0.01) {
+kwrs <- function(data, p_value = 0.05) {
     # Performs the tests
     res <- kruskal.test(palmitoleic ~ region, data = data)
 

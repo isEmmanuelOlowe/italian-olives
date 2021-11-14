@@ -4,7 +4,7 @@
 #   p_value: the value to rejected the NULL hypothesis if less than
 # OUTPUT:
 #   TRUE if the NULL Hypothesis is rejected
-anova_test <- function(data, p_value) {
+anova_test <- function(data, p_value = 0.05) {
     # Performs the test
     results <- aov(palmitoleic ~ region, data = data)
     # Extracts the P Value

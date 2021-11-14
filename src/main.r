@@ -1,22 +1,18 @@
 # Runs all the componenets of the project
+source("src/simulation.r")
+source("src/anova.r")
+source("src/kwrs.r")
 library("dslabs")
 data(olive)
 
-parameter <- "palmitoleic"
-# parameter <- "palmitic"
-north <- olive[olive$region == "Northern Italy", c("region", parameter)]
-south <- olive[olive$region == "Southern Italy", c("region", parameter)]
-sardinia <- olive[olive$region == "Sardinia", c("region", parameter)]
+# Performs the simulation study
+res1 <- simulation(anova_test)
+res2 <- simulation(kwrs)
 
-# Makes sure the data
-# res <- aov(palmitoleic ~ region, data = olive)
-summary(north)
-summary(south)
-summary(sardinia)
+# Prints the results of simulation study
+print_results("ONE WAY ANOVA", res1)
+print_results("KRUSKAL-WALLIS RANK RUM")
 
-boxplot(palmitoleic ~ region, data = olive, main = "Olive Region Data",
-   xlab = "Region", ylab = parameter, col = c("red", "green", "blue"))
-
-boxplot(olive$palmitoleic, add = TRUE)
-# qqnorm(north$palmitoleic)
-# qqline(north$palmitoleic)
+# Prints the results of the tests on the dataset
+print(paste0("ANOVA TEST RESULT: ", anova_test(olive)))
+print(paste0("KRUSKAL-WALLIS RANK SUM TEST RESULT: ", kwrs(olive)))
