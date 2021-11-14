@@ -20,7 +20,7 @@ simulation <- function(method, simulations = 10000,
             data_mean <- runif(1, min = mean[1], max = mean[2])
             data_sd <- runif(1, min = mean[1], max = mean[2])
             data <- rnorm(samples, mean = data_mean, sd = data_sd)
-            if (method(data)$reject == FALSE) {
+            if (method(data == FALSE) {
                 accuracy <- accuracy + 1
             }
             else {
@@ -35,7 +35,7 @@ simulation <- function(method, simulations = 10000,
             data_1 <- rnorm(samples * 0.7, mean = data_1_mean, sd = data_1_sd)
             data_2 <- rnorm(samples * 0.3, mean = data_2_mean, sd = data_2_sd)
             data <- c(data_1, data_2)
-            if (method(data)$reject == FALSE) {
+            if (method(data) == TRUE) {
                 power <- power + 1
                 accuracy <- accuracy + 1
                 difference <- min(difference, data_1_mean - data_2_mean)
@@ -52,7 +52,7 @@ simulation <- function(method, simulations = 10000,
             data_2 <- rnorm(samples * 0.3, mean = data_2_mean, sd = data_2_sd)
             data_3 <- rnorm(samples * 0.3, mean = data_3_mean, sd = data_3_sd)
             data <- c(data_1, data_2, data_3)
-            if (method(data)$reject == FALSE) {
+            if (method(data) == TRUE) {
                 power <- power + 1
                 accuracy <- accuracy + 1
                 difference <- min(difference, data_1_mean - data_2_mean,

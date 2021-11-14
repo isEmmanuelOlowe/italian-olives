@@ -18,3 +18,5 @@ boxplot(palmitoleic ~ region, data = olive, main = "Olive Region Data",
    xlab = "Region", ylab = parameter, col = c("red", "green", "blue"))
 
 boxplot(olive$palmitoleic, add = TRUE)
+# qqnorm(north$palmitoleic)
+# qqline(north$palmitoleic)
